@@ -1,6 +1,11 @@
 # log.lua
 A tiny logging module for Lua. WITH ADDED SUPPORT FOR LOVE AND VIM USERS!
 
+## Difference with the original repo (rxi's)
+
+* Setup for vim users to correctly display color
+* Save output file to appdata (when the game is released) instead of in the project folder
+
 ## SETUP
 
 Here's a simple setup
