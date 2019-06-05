@@ -14,7 +14,8 @@ log.outfile = nil
 log.lovesave = false
 log.useoutcolor = true
 log.level = "trace"
-
+log.intercept_fn = nil
+log.intercept_caller = nil
 
 local modes = {
   { name = "trace", color = "\27[34m", },
@@ -68,13 +69,19 @@ for i, x in ipairs(modes) do
     local lineinfo = info.short_src .. ":" .. info.currentline
 
     -- Output to console
-    print(string.format("%s[%-6s%s]%s %s: %s",
+    local str = string.format("%s[%-6s%s]%s %s: %s",
                         log.usecolor and x.color or "",
                         nameupper,
                         os.date("%H:%M:%S"),
                         log.usecolor and "\27[0m" or "",
                         lineinfo,
-                        msg))
+                        msg)
+	print(str)
+
+	if log.intercept_fn and log.intercept_caller then
+      local str = string.format("%s[%s]: %s\n", nameupper, lineinfo, msg)
+		log.intercept_fn(log.intercept_caller, str)
+	end
 
     -- Output to log file
     if log.outfile and not log.lovesave then
@@ -86,7 +93,7 @@ for i, x in ipairs(modes) do
     end
 
     if log.outfile and log.lovesave then
-      local str = string.format("%s[%-6s%s] %s: %s\n", 
+      local str = string.format("%s[%-6s%s] %s: %s\n",
       	log.useoutcolor and x.color or "", nameupper, os.date(), lineinfo, msg)
       if not love.filesystem.getInfo(log.outfile) then
     		love.filesystem.newFile(log.outfile)
