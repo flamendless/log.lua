@@ -5,7 +5,9 @@ A tiny logging module for Lua. WITH ADDED SUPPORT FOR LOVE AND VIM USERS!
 
 * Setup for vim users to correctly display color
 * Save output file to appdata (when the game is released) instead of in the project folder
-* Allow intercepting function to easily get the string to be printed (for ImGui Console or other custom logging). For usage see [this]("https://github.com/flamendless/Purrr/blob/da10e0c0479862b8c6c2e1ce44966dd9c7de1ca2/src/debug.lua2p#L286-L301")
+* Allow intercepting function to easily get the string to be printed (for ImGui Console or other custom logging).
+
+For usage of `log.intercept_fn` and `log.intercept_caller` with `dear imgui`, see [this]("https://github.com/flamendless/Purrr/blob/da10e0c0479862b8c6c2e1ce44966dd9c7de1ca2/src/debug.lua2p#L286-L301")
 
 ## SETUP
 
