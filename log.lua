@@ -80,7 +80,7 @@ for i, x in ipairs(modes) do
 
 	if log.intercept_fn and log.intercept_caller then
       local str = string.format("%s[%s]: %s\n", nameupper, lineinfo, msg)
-		log.intercept_fn(log.intercept_caller, str)
+		log.intercept_fn(str)
 	end
 
     -- Output to log file
