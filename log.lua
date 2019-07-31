@@ -88,7 +88,7 @@ for i, x in ipairs(modes) do
 			log.intercept_fn(str)
 		end
 
-		if log.outfile and not log.logsave then
+		if log.outfile and not log.lovesave then
 			local fp = open(log.outfile, "a")
 			local str = format("[%-6s%s] %s: %s\n",
 				nameupper, date(), lineinfo, msg)
@@ -96,7 +96,7 @@ for i, x in ipairs(modes) do
 			fp:close()
 		end
 
-		if log.outfile and log.logsave then
+		if log.outfile and log.lovesave then
 			local str = format("[%-6s%s] %s: %s\n",
 				nameupper, date(), lineinfo, msg)
 			if not love.filesystem.getInfo(log.outfile) then
